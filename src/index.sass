@@ -1,0 +1,38 @@
+@use "sass:color"
+
+$fg-color: #efefef
+$bg-color: #282a39
+
+* 
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+body
+    background-color: color.scale($bg-color, $lightness: -10%)
+
+.nconsole-prompt
+    width: fit-content
+    border-right-color: $fg-color
+    border-right-width: 2px
+    padding-right: 2px
+    border-right-style: solid
+    animation: blink-cursor 1s step-start infinite
+
+.nconsole-console 
+    margin: auto
+    background-color: $bg-color
+    color: $fg-color
+    font-family: "Comic Mono", monospace
+    width: 50vw
+    height: 50vh
+    margin-top: 25vh
+    background-clip: content-box
+    overflow-y: scroll
+
+
+@keyframes blink-cursor 
+    0%
+        border-right-style: solid
+    50%
+        border-right-style: none
