@@ -19,13 +19,17 @@ uglify=0
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
+        --debug)
+            nim_args+=("--sourcemap:on")
+            shift
+            ;;
         --release)
-            nim_args+="-d:release"
+            nim_args+=("-d:release")
             uglify=1
             shift
             ;;
         --quiet)
-            nim_args+="--hints:off"
+            nim_args+=("--hints:off")
             shift
             ;;
         *)

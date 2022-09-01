@@ -4,8 +4,10 @@ current_dir=$(dirname "$(readlink $0)")
 cd "$current_dir"
 
 
+build_args=(--quiet --debug)
+
 echo "Executing initial build."
-./build.sh --quiet
+./build.sh "${build_args[@]}"
 
 while IFS= read -r change; do
     case "$change" in
@@ -17,7 +19,7 @@ while IFS= read -r change; do
             ;;
         ./build.sh|./src/*|.res/*)
             echo "Detected source change at $change. Rebuilding."
-            ./build.sh --quiet
+            ./build.sh "${build_args[@]}"
             ;;
         ./.git/*|./dist/*)
             ## Known ignorable changes.
